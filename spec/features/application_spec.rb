@@ -35,6 +35,7 @@ RSpec.describe "application" do
 
   it "displays a link to all veterinarians" do
     visit "/"
+    # save_and_open_page
 
     expect(page).to have_link("Veterinarians")
     click_link("Veterinarians")
