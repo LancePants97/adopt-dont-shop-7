@@ -1,3 +1,11 @@
+# Lance & Clyde version
+
+- [DB: Schema](https://dbdiagram.io/d/664677fdf84ecd1d226577ef)
+- [DTR](https://docs.google.com/document/d/1fGoPUxZDmYf8-JPhiMjLe0isj9V4Er3oMueqqPOi2Ys/edit)
+- [Github Projects](https://github.com/users/LancePants97/projects/2)
+
+
+
 # Adopt, don't Shop
 
 This is a paired project used in Turing School's Backend Program Module 2.

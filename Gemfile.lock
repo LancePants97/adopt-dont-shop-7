@@ -265,6 +265,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+user_story_1
   arm64-darwin-22
   x86_64-darwin-21
   x86_64-linux
