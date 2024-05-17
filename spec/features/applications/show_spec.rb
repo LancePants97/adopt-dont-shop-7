@@ -164,7 +164,6 @@ RSpec.describe Application do
 	end
 	it "shows the application and all it's attributes" do
 
-
     visit "/applications/#{@app1.id}"
 		save_and_open_page
 
