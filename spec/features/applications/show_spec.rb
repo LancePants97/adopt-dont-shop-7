@@ -32,7 +32,7 @@ RSpec.describe Application do
 						age: 3,
 						breed: "Labrador",
 						name: "Buddy",
-						shelter_id: hts.id
+						shelter_id: @hts.id
 						)
 
 	# Pet 2
@@ -41,7 +41,7 @@ RSpec.describe Application do
 						age: 7,
 						breed: "Siamese",
 						name: "Mittens",
-						shelter_id: hts.id
+						shelter_id: @hts.id
 						)
 
 	# Pet 3
@@ -50,7 +50,7 @@ RSpec.describe Application do
 						age: 2,
 						breed: "Bulldog",
 						name: "Rex",
-						shelter_id: sfhva.id
+						shelter_id: @sfhva.id
 						)
 
 	# Pet 4
@@ -59,7 +59,7 @@ RSpec.describe Application do
 						age: 5,
 						breed: "Beagle",
 						name: "Luna",
-						shelter_id: sfhva.id
+						shelter_id: @sfhva.id
 						)
 
 	# Pet 5
@@ -68,7 +68,7 @@ RSpec.describe Application do
 						age: 4,
 						breed: "Persian",
 						name: "Simba",
-						shelter_id: sfhva.id
+						shelter_id: @sfhva.id
 						)
 
 	# Pet 6
@@ -77,7 +77,7 @@ RSpec.describe Application do
 						age: 6,
 						breed: "Poodle",
 						name: "Charlie",
-						shelter_id: pcs.id
+						shelter_id: @pcs.id
 						)
 
 
@@ -109,7 +109,7 @@ RSpec.describe Application do
 								on_call: true,
 								review_rating: 5,
 								name: "Dr. Sarah Brown",
-								veterinary_office_id: vet_office1.id
+								veterinary_office_id: @vet_office1.id
 								)
 
 	# Veterinarian 2
@@ -117,7 +117,7 @@ RSpec.describe Application do
 								on_call: false,
 								review_rating: 4,
 								name: "Dr. Michael Smith",
-								veterinary_office_id: vet_office1.id
+								veterinary_office_id: @vet_office1.id
 								)
 
 	# Veterinarian 3
@@ -125,7 +125,7 @@ RSpec.describe Application do
 								on_call: true,
 								review_rating: 5,
 								name: "Dr. Emily Johnson",
-								veterinary_office_id: vet_office2.id
+								veterinary_office_id: @vet_office2.id
 								)
 
 	# Veterinarian 4
@@ -133,7 +133,7 @@ RSpec.describe Application do
 								on_call: false,
 								review_rating: 3,
 								name: "Dr. David Lee",
-								veterinary_office_id: vet_office2.id
+								veterinary_office_id: @vet_office2.id
 								)
 
 	# Veterinarian 5
@@ -141,7 +141,7 @@ RSpec.describe Application do
 								on_call: true,
 								review_rating: 4,
 								name: "Dr. Jennifer Wilson",
-								veterinary_office_id: vet_office3.id
+								veterinary_office_id: @vet_office3.id
 								)
 
 	# Veterinarian 6
@@ -149,7 +149,7 @@ RSpec.describe Application do
 								on_call: false,
 								review_rating: 5,
 								name: "Dr. James Martinez",
-								veterinary_office_id: vet_office3.id
+								veterinary_office_id: @vet_office3.id
 								)
 
 	@app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
@@ -158,9 +158,9 @@ RSpec.describe Application do
 	@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
 
 	# Associate pets with applications
-	ApplicationPet.create!(application: app1, pet: pet1)
-	ApplicationPet.create!(application: app1, pet: pet2)
-	ApplicationPet.create!(application: app2, pet: pet2)
+	ApplicationPet.create!(application: @app1, pet: @pet1)
+	ApplicationPet.create!(application: @app1, pet: @pet2)
+	ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
 	it "shows the application and all it's attributes" do
 
@@ -173,5 +173,11 @@ RSpec.describe Application do
     expect(page).to have_content(@app1.city)
     expect(page).to have_content(@app1.state)
     expect(page).to have_content(@app1.zip_code)
+    expect(page).to have_content(@app1.description)
+    expect(page).to have_content(@app1.status)
+
+	expect(page).to have_content(@pet1.name)
+	expect(page).to have_content(@pet1.name)
+
 	end
 end

@@ -5,5 +5,9 @@
 <p>Zip Code: <%= @application.zip_code %></p>
 <p>Why you are a good applicant: <%= @application.description %></p>
 <p>Pets in application:<p>
-    <%= @application.pets.name #we need a method on this object that will return all the pets names in a legible format %>
+<ul>
+    <% @application.pets.each do |pet| %>
+        <li><%= pet.name %></li>
+    <% end%>
+</ul>
 <p>Application status: <%= @application.status %></p>
