@@ -1,6 +1,35 @@
 require "rails_helper"
 
 RSpec.describe "the pets index" do
+
+  it "has a link to start an application when I click this link then I am taken to the new application where I see a form. Once I submit it I am taken to a completed page" do
+    shelter = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
+
+
+    visit "/pets"
+
+    expect(page).to have_link("Start an Application")
+    click_link("Start an Application")
+
+    expect(page).to have_current_path("/applications/new")
+
+    fill_in 'Name', with: 'John Doe'
+    fill_in 'Street Address', with: '123 Main St'
+    fill_in 'City', with: 'Denver'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip Code', with: '80202'
+    fill_in 'Description', with: 'I would make a great home because I love animals.'
+    
+    click_button("Submit")
+
+    # Check that we are on the application's show page
+    application = Application.last
+    expect(page).to have_current_path("applications/#{application.id}")
+
+    expect(page).to have_content("In Progress")
+
+  end
+
   it "lists all the pets with their attributes" do
     shelter = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
     pet_1 = Pet.create(adoptable: true, age: 1, breed: "sphynx", name: "Lucille Bald", shelter_id: shelter.id)

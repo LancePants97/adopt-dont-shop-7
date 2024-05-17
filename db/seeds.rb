@@ -6,64 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Pet.destroy_all
 Shelter.destroy_all
+Pet.destroy_all
+VeterinaryOffice.destroy_all
 Veterinarian.destroy_all
-VeternaryOffice.destroy_all
-
-# Pet 1
-buddy = Pet.create!(
-                adoptable: true,
-                age: 3,
-                breed: "Labrador",
-                name: "Buddy",
-                shelter_id: 1
-                )
-
-# Pet 2
-mittens = Pet.create!(
-                adoptable: false,
-                age: 7,
-                breed: "Siamese",
-                name: "Mittens",
-                shelter_id: 1
-                )
-
-# Pet 3
-rex = Pet.create!(
-                adoptable: true,
-                age: 2,
-                breed: "Bulldog",
-                name: "Rex",
-                shelter_id: 2
-                )
-
-# Pet 4
-luna = Pet.create!(
-                adoptable: false,
-                age: 5,
-                breed: "Beagle",
-                name: "Luna",
-                shelter_id: 2
-                )
-
-# Pet 5
-simba = Pet.create!(
-                adoptable: true,
-                age: 4,
-                breed: "Persian",
-                name: "Simba",
-                shelter_id: 2
-                )
-
-# Pet 6
-charlie = Pet.create!(
-                    adoptable: true,
-                    age: 6,
-                    breed: "Poodle",
-                    name: "Charlie",
-                    shelter_id: 3
-                    )
+Application.destroy_all
 
 # Shelter 1
 hts = Shelter.create!(
@@ -89,53 +36,61 @@ pcs = Shelter.create!(
                     rank: 3
                     )
 
-# Veterinarian 1
-vet1 = Veterinarian.create!(
-                            on_call: true,
-                            review_rating: 5,
-                            name: "Dr. Sarah Brown",
-                            veterinary_office_id: 1
-                            )
+# Pet 1
+pet1 = Pet.create!(
+                adoptable: true,
+                age: 3,
+                breed: "Labrador",
+                name: "Buddy",
+                shelter_id: hts.id
+                )
 
-# Veterinarian 2
-vet2 = Veterinarian.create!(
-                            on_call: false,
-                            review_rating: 4,
-                            name: "Dr. Michael Smith",
-                            veterinary_office_id: 1
-                            )
+# Pet 2
+pet2 = Pet.create!(
+                adoptable: false,
+                age: 7,
+                breed: "Siamese",
+                name: "Mittens",
+                shelter_id: hts.id
+                )
 
-# Veterinarian 3
-vet3 = Veterinarian.create!(
-                            on_call: true,
-                            review_rating: 5,
-                            name: "Dr. Emily Johnson",
-                            veterinary_office_id: 2
-                            )
+# Pet 3
+pet3 = Pet.create!(
+                adoptable: true,
+                age: 2,
+                breed: "Bulldog",
+                name: "Rex",
+                shelter_id: sfhva.id
+                )
 
-# Veterinarian 4
-vet4 = Veterinarian.create!(
-                            on_call: false,
-                            review_rating: 3,
-                            name: "Dr. David Lee",
-                            veterinary_office_id: 2
-                            )
+# Pet 4
+pet4 = Pet.create!(
+                adoptable: false,
+                age: 5,
+                breed: "Beagle",
+                name: "Luna",
+                shelter_id: sfhva.id
+                )
 
-# Veterinarian 5
-vet5 = Veterinarian.create!(
-                            on_call: true,
-                            review_rating: 4,
-                            name: "Dr. Jennifer Wilson",
-                            veterinary_office_id: 3
-                            )
+# Pet 5
+pet5 = Pet.create!(
+                adoptable: true,
+                age: 4,
+                breed: "Persian",
+                name: "Simba",
+                shelter_id: sfhva.id
+                )
 
-# Veterinarian 6
-vet6 = Veterinarian.create!(
-                            on_call: false,
-                            review_rating: 5,
-                            name: "Dr. James Martinez",
-                            veterinary_office_id: 3
-                            )
+# Pet 6
+pet6 = Pet.create!(
+                    adoptable: true,
+                    age: 6,
+                    breed: "Poodle",
+                    name: "Charlie",
+                    shelter_id: pcs.id
+                    )
+
+
 
 # Veterinary Office 1
 vet_office1 = VeterinaryOffice.create!(
@@ -157,3 +112,62 @@ vet_office3 = VeterinaryOffice.create!(
                                         max_patient_capacity: 40,
                                         name: "Hillside Veterinary Services"
                                         )
+# Application number 1                       
+
+# Veterinarian 1
+vet1 = Veterinarian.create!(
+                            on_call: true,
+                            review_rating: 5,
+                            name: "Dr. Sarah Brown",
+                            veterinary_office_id: vet_office1.id
+                            )
+
+# Veterinarian 2
+vet2 = Veterinarian.create!(
+                            on_call: false,
+                            review_rating: 4,
+                            name: "Dr. Michael Smith",
+                            veterinary_office_id: vet_office1.id
+                            )
+
+# Veterinarian 3
+vet3 = Veterinarian.create!(
+                            on_call: true,
+                            review_rating: 5,
+                            name: "Dr. Emily Johnson",
+                            veterinary_office_id: vet_office2.id
+                            )
+
+# Veterinarian 4
+vet4 = Veterinarian.create!(
+                            on_call: false,
+                            review_rating: 3,
+                            name: "Dr. David Lee",
+                            veterinary_office_id: vet_office2.id
+                            )
+
+# Veterinarian 5
+vet5 = Veterinarian.create!(
+                            on_call: true,
+                            review_rating: 4,
+                            name: "Dr. Jennifer Wilson",
+                            veterinary_office_id: vet_office3.id
+                            )
+
+# Veterinarian 6
+vet6 = Veterinarian.create!(
+                            on_call: false,
+                            review_rating: 5,
+                            name: "Dr. James Martinez",
+                            veterinary_office_id: vet_office3.id
+                            )
+
+app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
+
+# Application number 2
+app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
+
+# Associate pets with applications
+ApplicationPet.create!(application: app1, pet: pet1)
+ApplicationPet.create!(application: app1, pet: pet2)
+ApplicationPet.create!(application: app2, pet: pet2)
