@@ -170,19 +170,19 @@ RSpec.describe "the pets index" do
     click_link("Start an Application")
 
     expect(page).to have_current_path("/applications/new")
-
-    fill_in 'Name', with: 'John Doe'
-    fill_in 'Street Address', with: '123 Main St'
-    fill_in 'City', with: 'Denver'
-    fill_in 'State', with: 'CO'
-    fill_in 'Zip Code', with: '80202'
-    fill_in 'Description', with: 'I would make a great home because I love animals.'
+    # save_and_open_page
+    fill_in 'applicant_name', with: 'John Doe'
+    fill_in 'street_address', with: '123 Main St'
+    fill_in 'city', with: 'Denver'
+    fill_in 'state', with: 'CO'
+    fill_in 'zip_code', with: '80202'
+    fill_in 'description', with: 'I would make a great home because I love animals.'
     
     click_button("Submit")
 
     # Check that we are on the application's show page
     application = Application.last
-    expect(page).to have_current_path("applications/#{application.id}")
+    expect(page).to have_current_path("/applications/#{application.id}")
 
     expect(page).to have_content(application.applicant_name)
     expect(page).to have_content(application.street_address)
