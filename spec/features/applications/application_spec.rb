@@ -19,5 +19,5 @@ RSpec.describe Application do
     expect(page).to have_content(application_1.city)
     expect(page).to have_content(application_1.state)
     expect(page).to have_content(application_1.zip_code)
-  end
+	end
 end
