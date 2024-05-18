@@ -9,11 +9,15 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create(application_params)
-
+    @application = Application.new(application_params)
     @application.status = 'In Progress'
-    @application.save
-    redirect_to "/applications/#{@application.id}"
+
+    if @application.save
+      redirect_to "/applications/#{@application.id}"
+    else
+      flash[:error] = "All fields must be filled in."
+      redirect_to "/applications/new"
+    end
   end
   
   def application_params

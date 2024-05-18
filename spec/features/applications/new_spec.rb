@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Application do
+RSpec.describe "the pets index" do
 	before(:all) do
 		# Shelter 1
 	@hts = Shelter.create!(
@@ -162,21 +162,14 @@ RSpec.describe Application do
 	ApplicationPet.create!(application: @app1, pet: @pet2)
 	ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
-	it "shows the application and all it's attributes" do
+    it "keeps me on the same page and gives me an error message if I try to submit wihtout filling out the form" do
+        
+        visit "/applications/new"
 
-    visit "/applications/#{@app1.id}"
-
-
-    expect(page).to have_content(@app1.applicant_name)
-    expect(page).to have_content(@app1.street_address)
-    expect(page).to have_content(@app1.city)
-    expect(page).to have_content(@app1.state)
-    expect(page).to have_content(@app1.zip_code)
-    expect(page).to have_content(@app1.description)
-    expect(page).to have_content(@app1.status)
-
-	expect(page).to have_content(@pet1.name)
-	expect(page).to have_content(@pet1.name)
-
-	end
+        save_and_open_page
+        click_button ("Submit")
+        expect(page).to have_current_path("/applications/new")
+        expect(page).to have_content("All fields must be filled in.")
+        
+    end
 end
