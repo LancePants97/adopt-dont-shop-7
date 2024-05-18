@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "the pets index" do
-	before(:all) do
+	before(:each) do
 		# Shelter 1
 	@hts = Shelter.create!(
 							foster_program: true,
@@ -152,6 +152,7 @@ RSpec.describe "the pets index" do
 								veterinary_office_id: @vet_office3.id
 								)
 
+	# Application number 1
 	@app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
 
 	# Application number 2
@@ -162,7 +163,7 @@ RSpec.describe "the pets index" do
 	ApplicationPet.create!(application: @app1, pet: @pet2)
 	ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
-    it "keeps me on the same page and gives me an error message if I try to submit wihtout filling out the form" do
+    it "keeps me on the same page and gives me an error message if I try to submit without filling out the form" do
         
         visit "/applications/new"
 

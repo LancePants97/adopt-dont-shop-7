@@ -35,7 +35,7 @@ RSpec.describe "the veterinarian update" do
     it "re-renders the edit form" do
       shelter = Shelter.create(name: "Heavenly pets", city: "Aurora, CO", foster_program: false, rank: 7)
       pet = Pet.create(adoptable: false, age: 3, breed: "Whippet", name: "Annabelle", shelter_id: shelter.id)
-
+      
       visit "/pets/#{pet.id}/edit"
 
       fill_in "Name", with: ""
