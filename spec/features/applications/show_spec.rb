@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Application do
 	before(:each) do
 		# Shelter 1
-	@hts = Shelter.create!(
+		@hts = Shelter.create!(
 							foster_program: true,
 							name: "Happy Tails Shelter",
 							city: "Denver",
@@ -11,7 +11,7 @@ RSpec.describe Application do
 							)
 
 	# Shelter 2
-	@sfhva = Shelter.create!(
+		@sfhva = Shelter.create!(
 							foster_program: false,
 							name: "Safe Haven Animal Rescue",
 							city: "Austin",
@@ -19,7 +19,7 @@ RSpec.describe Application do
 							)
 
 	# Shelter 3
-	@pcs = Shelter.create!(
+		@pcs = Shelter.create!(
 							foster_program: true,
 							name: "Paws and Claws Sanctuary",
 							city: "Seattle",
@@ -27,7 +27,7 @@ RSpec.describe Application do
 							)
 
 	# Pet 1
-	@pet1 = Pet.create!(
+		@pet1 = Pet.create!(
 						adoptable: true,
 						age: 3,
 						breed: "Labrador",
@@ -36,7 +36,7 @@ RSpec.describe Application do
 						)
 
 	# Pet 2
-	@pet2 = Pet.create!(
+		@pet2 = Pet.create!(
 						adoptable: false,
 						age: 7,
 						breed: "Siamese",
@@ -45,7 +45,7 @@ RSpec.describe Application do
 						)
 
 	# Pet 3
-	@pet3 = Pet.create!(
+		@pet3 = Pet.create!(
 						adoptable: true,
 						age: 2,
 						breed: "Bulldog",
@@ -54,7 +54,7 @@ RSpec.describe Application do
 						)
 
 	# Pet 4
-	@pet4 = Pet.create!(
+		@pet4 = Pet.create!(
 						adoptable: false,
 						age: 5,
 						breed: "Beagle",
@@ -63,7 +63,7 @@ RSpec.describe Application do
 						)
 
 	# Pet 5
-	@pet5 = Pet.create!(
+		@pet5 = Pet.create!(
 						adoptable: true,
 						age: 4,
 						breed: "Persian",
@@ -72,7 +72,7 @@ RSpec.describe Application do
 						)
 
 	# Pet 6
-	@pet6 = Pet.create!(
+		@pet6 = Pet.create!(
 						adoptable: true,
 						age: 6,
 						breed: "Poodle",
@@ -83,21 +83,21 @@ RSpec.describe Application do
 
 
 	# Veterinary Office 1
-	@vet_office1 = VeterinaryOffice.create!(
+		@vet_office1 = VeterinaryOffice.create!(
 											boarding_services: true,
 											max_patient_capacity: 50,
 											name: "Green Valley Vet Clinic"
 											)
 
 	# Veterinary Office 2
-	@vet_office2 = VeterinaryOffice.create!(
+		@vet_office2 = VeterinaryOffice.create!(
 											boarding_services: false,
 											max_patient_capacity: 30,
 											name: "Downtown Animal Hospital"
 											)
 
 	# Veterinary Office 3
-	@vet_office3 = VeterinaryOffice.create!(
+		@vet_office3 = VeterinaryOffice.create!(
 											boarding_services: true,
 											max_patient_capacity: 40,
 											name: "Hillside Veterinary Services"
@@ -105,7 +105,7 @@ RSpec.describe Application do
 	# Application number 1                       
 
 	# Veterinarian 1
-	@vet1 = Veterinarian.create!(
+		@vet1 = Veterinarian.create!(
 								on_call: true,
 								review_rating: 5,
 								name: "Dr. Sarah Brown",
@@ -113,7 +113,7 @@ RSpec.describe Application do
 								)
 
 	# Veterinarian 2
-	@vet2 = Veterinarian.create!(
+		@vet2 = Veterinarian.create!(
 								on_call: false,
 								review_rating: 4,
 								name: "Dr. Michael Smith",
@@ -121,7 +121,7 @@ RSpec.describe Application do
 								)
 
 	# Veterinarian 3
-	@vet3 = Veterinarian.create!(
+		@vet3 = Veterinarian.create!(
 								on_call: true,
 								review_rating: 5,
 								name: "Dr. Emily Johnson",
@@ -129,7 +129,7 @@ RSpec.describe Application do
 								)
 
 	# Veterinarian 4
-	@vet4 = Veterinarian.create!(
+		@vet4 = Veterinarian.create!(
 								on_call: false,
 								review_rating: 3,
 								name: "Dr. David Lee",
@@ -137,7 +137,7 @@ RSpec.describe Application do
 								)
 
 	# Veterinarian 5
-	@vet5 = Veterinarian.create!(
+		@vet5 = Veterinarian.create!(
 								on_call: true,
 								review_rating: 4,
 								name: "Dr. Jennifer Wilson",
@@ -145,27 +145,26 @@ RSpec.describe Application do
 								)
 
 	# Veterinarian 6
-	@vet6 = Veterinarian.create!(
+		@vet6 = Veterinarian.create!(
 								on_call: false,
 								review_rating: 5,
 								name: "Dr. James Martinez",
 								veterinary_office_id: @vet_office3.id
 								)
 
-	@app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
+		@app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
 
 	# Application number 2
-	@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
+		@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
 
 	# Associate pets with applications
-	ApplicationPet.create!(application: @app1, pet: @pet1)
-	ApplicationPet.create!(application: @app1, pet: @pet2)
-	ApplicationPet.create!(application: @app2, pet: @pet2)
+		ApplicationPet.create!(application: @app1, pet: @pet1)
+		ApplicationPet.create!(application: @app1, pet: @pet2)
+		ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
+
 	it "shows the application and all it's attributes" do
-
     visit "/applications/#{@app1.id}"
-
 
     expect(page).to have_content(@app1.applicant_name)
     expect(page).to have_content(@app1.street_address)
@@ -175,8 +174,22 @@ RSpec.describe Application do
     expect(page).to have_content(@app1.description)
     expect(page).to have_content(@app1.status)
 
-	expect(page).to have_content(@pet1.name)
-	expect(page).to have_content(@pet1.name)
+		expect(page).to have_content(@pet1.name)
+		expect(page).to have_content(@pet1.name)
+	end
 
+	it 'shows an option to add a pet to the application' do
+		visit "/applications/new"
+
+		expect(page).to have_content("Add a Pet to this Application")
+		expect(page).to have_button("Search")
+
+		fill_in "Search", with: "Buddy"
+		
+		# click_on("Search")
+
+		save_and_open_page
+
+		# expect(page).to have_content(@pet1.name)
 	end
 end

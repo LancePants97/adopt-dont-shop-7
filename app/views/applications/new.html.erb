@@ -2,7 +2,7 @@
     <p style="color: red;"><%= flash[:error] %></p>
 <% end %>
 
-<%= form_with url: '/applications', local: true do |form| %>
+<%= form_with url: '/pets', local: true do |form| %>
   <div>
     <%= form.label :applicant_name %>
     <%= form.text_field :applicant_name %>
@@ -27,6 +27,18 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
+  <div> 
+    <%= "Add a Pet to this Application" %>
+  </div>
+
+  <div>
+  <%= form_with url: "/applications/new", method: :get, local: true do |f| %>
+    <%= f.label "search" %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+  <% end %>
+  </div>  
+  
   <div>
     <%= form.submit "Submit" %>
   </div>
