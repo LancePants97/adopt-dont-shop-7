@@ -2,7 +2,7 @@
     <p style="color: red;"><%= flash[:error] %></p>
 <% end %>
 
-<%= form_with url: '/pets', local: true do |form| %>
+<%= form_with url: '/applications', local: true do |form| %>
   <div>
     <%= form.label :applicant_name %>
     <%= form.text_field :applicant_name %>
