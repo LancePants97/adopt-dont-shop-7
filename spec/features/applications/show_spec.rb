@@ -241,9 +241,9 @@ RSpec.describe Application do
 # And I see all the pets that I want to adopt
 # And I do not see a section to add more pets to this application
 
-xit 'lets you submit the application' do
+it 'lets you submit the application' do
 	visit "/applications/#{@app1.id}"
-	
+
 	expect(page).to have_content("Submit application")
 	expect(page).to have_content("Why I would make a good owner for these pet(s)")
 	# note that good owner and good home are two separate fields
