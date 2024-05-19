@@ -1,5 +1,4 @@
 class ApplicationsController < ApplicationController
-
   def show
     @application = Application.find(params[:id])
     if params[:search].present?
@@ -10,10 +9,17 @@ class ApplicationsController < ApplicationController
   def new
   end
 
+  def submit
+    @application = Application.find(params[:id])
+    # require 'pry'; binding.pry
+    # @application.status = 'Pending'
+    @application.update({"status" => "Pending"})
+    redirect_to "/applications/#{@application.id}"
+  end
+
   def create
     @application = Application.new(application_params)
     @application.status = 'In Progress'
-
     if @application.save
       redirect_to "/applications/#{@application.id}"
     else

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "the pets index" do
 	before(:each) do
-		# Shelter 1
+	# Shelter 1
 	@hts = Shelter.create!(
 							foster_program: true,
 							name: "Happy Tails Shelter",
