@@ -12,4 +12,19 @@ class Pet < ApplicationRecord
   def self.adoptable
     where(adoptable: true)
   end
+
+  def self.search(search)
+    where('name ILIKE ? OR breed ILIKE ?', "%#{search}%", "%#{search}%")
+
+    # if search
+    #   dog_details = Pet.find_by(name: search)
+    #   if dog_details
+    #     self.where(pet_id: dog_details)
+    #   else
+    #     @pet = Pet.all
+    #   end
+    # else
+    #   @pet = Pet.all
+    # end
+  end
 end

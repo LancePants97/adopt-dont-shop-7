@@ -167,7 +167,7 @@ RSpec.describe "the pets index" do
         
         visit "/applications/new"
 
-        save_and_open_page
+        # save_and_open_page
         click_button ("Submit")
         expect(page).to have_current_path("/applications/new")
         expect(page).to have_content("All fields must be filled in.")

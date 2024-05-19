@@ -1,4 +1,45 @@
-<h1>Name: <%= @application.applicant_name %></h1>
+<!-- app/views/applications/show.html.erb -->
+<h1>Application for <%= @application.applicant_name %></h1>
+<p>Street: <%= @application.street_address %></p>
+<p>City: <%= @application.city %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip Code: <%= @application.zip_code %></p>
+<p>Why you are a good applicant: <%= @application.description %></p>
+<p>Application status: <%= @application.status %></p>
+<p>Pets in application:</p>
+<ul>
+  <% @application.pets.each do |pet| %>
+    <li><%= pet.name %></li>
+  <% end %>
+</ul>
+
+<% if @application.status != 'Submitted' %>
+  <h2>Add a Pet to this Application</h2>
+  <%= form_with url: "/search_pets", method: :get, local: true do %>
+    <div>
+      <%= label_tag :search, "Search for a pet by name" %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= hidden_field_tag :application_id, @application.id %>
+      <%= submit_tag "Submit" %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @pets %>
+  <h3>Search Results</h3>
+  <ul>
+    <% @pets.each do |pet| %>
+      <li>
+        <%= pet.name %> - 
+        <%= button_to "Add to Application", "/applications/#{@application.id}/add_pet/#{pet.id}", method: :post %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
+<!-- <h1>Name: <%= @application.applicant_name %></h1>
 <p>Street: <%= @application.street_address %></p>
 <p>City: <%= @application.city %></p>
 <p>State: <%= @application.state %></p>
@@ -11,3 +52,9 @@
     <% end%>
 </ul>
 <p>Application status: <%= @application.status %></p>
+
+<%= form_tag '/applications/:id', :method => "get" do %>
+    <%= label_tag(:search, "Add a Pet to this Application") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Submit", :name => nil)%>
+<% end %> -->

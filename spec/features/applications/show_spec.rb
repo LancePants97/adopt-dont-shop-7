@@ -178,18 +178,33 @@ RSpec.describe Application do
 		expect(page).to have_content(@pet1.name)
 	end
 
-	it 'shows an option to add a pet to the application' do
-		visit "/applications/new"
+# 	[ ] done
+
+# 4. Searching for Pets for an Application
+
+# As a visitor
+# When I visit an application's show page
+# And that application has not been submitted,
+# Then I see a section on the page to "Add a Pet to this Application"
+# In that section I see an input where I can search for Pets by name
+# When I fill in this field with a Pet's name
+# And I click submit,
+# Then I am taken back to the application show page
+# And under the search bar I see any Pet whose name matches my search
+
+	it 'shows an option to search and add a pet to the application' do
+		visit "/applications/#{@app2.id}"
 
 		expect(page).to have_content("Add a Pet to this Application")
-		expect(page).to have_button("Search")
+		expect(page).to have_button("Submit")
 
-		fill_in "Search", with: "Buddy"
+		fill_in :search, with: "Buddy"
 		
-		# click_on("Search")
+		# save_and_open_page
+		click_on("Submit")
+		# expect(page).to have_current_path("/applications/#{@app2.id}")
+		expect(page).to have_current_path("/applications/#{@app2.id}?search=Buddy")
 
-		save_and_open_page
-
-		# expect(page).to have_content(@pet1.name)
+		expect(page).to have_content(@pet1.name)
 	end
 end
