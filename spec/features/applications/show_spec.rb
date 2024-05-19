@@ -200,9 +200,10 @@ RSpec.describe Application do
 
 		fill_in :search, with: "Buddy"
 		
-		save_and_open_page
+		# save_and_open_page
 		click_on("Submit")
-		expect(page).to have_current_path("/applications/#{@app2.id}")
+		# expect(page).to have_current_path("/applications/#{@app2.id}")
+		expect(page).to have_current_path("/applications/#{@app2.id}?search=Buddy")
 
 		expect(page).to have_content(@pet1.name)
 	end

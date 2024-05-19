@@ -14,8 +14,8 @@ class Pet < ApplicationRecord
   end
 
   def self.search(search)
+    where('name ILIKE ? OR breed ILIKE ?', "%#{search}%", "%#{search}%")
 
-    
     # if search
     #   dog_details = Pet.find_by(name: search)
     #   if dog_details

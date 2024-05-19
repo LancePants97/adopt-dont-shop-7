@@ -7,6 +7,13 @@ class PetsController < ApplicationController
     end
   end
 
+  def search
+    @application = Application.find(params[:application_id])
+    @pets = Pet.where('name ILIKE ?', "%#{params[:search]}%")
+    redirect_to "/applications/#{params[:application_id]}?search=#{params[:search]}"
+    # render 'applications/show'
+  end
+
   def show
     @pet = Pet.find(params[:id])
   end
