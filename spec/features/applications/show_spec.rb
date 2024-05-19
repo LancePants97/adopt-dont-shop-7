@@ -193,19 +193,19 @@ RSpec.describe Application do
 # And under the search bar I see any Pet whose name matches my search
 
 	it 'shows an option to search and add a pet to the application' do
-		visit "/applications/#{@app2.id}"
-
+		visit "/applications/#{@app1.id}"
+	
 		expect(page).to have_content("Add a Pet to this Application")
 		expect(page).to have_button("Submit")
 
-		fill_in :search, with: "Buddy"
+		fill_in :search, with: "Rex"
 		
 		# save_and_open_page
 		click_on("Submit")
 		# expect(page).to have_current_path("/applications/#{@app2.id}")
-		expect(page).to have_current_path("/applications/#{@app2.id}?search=Buddy")
+		expect(page).to have_current_path("/applications/#{@app1.id}?search=Rex")
 
-		expect(page).to have_content(@pet1.name)
+		expect(page).to have_content(@pet3.name)
 	end
 
 # 	As a visitor
@@ -218,15 +218,43 @@ RSpec.describe Application do
 # And I see the Pet I want to adopt listed on this application
 
 	it ' lets you add a pet to the application' do
-		visit "/applications/#{@app2.id}"
+		visit "/applications/#{@app1.id}"
 
-		fill_in :search, with: "Buddy"
+		fill_in :search, with: "Rex"
 		click_on("Submit")
-		expect(page).to have_content("Buddy")
+		expect(page).to have_content("Rex")
 		expect(page).to have_button("Adopt this Pet")
 		click_on("Adopt this Pet")
-		expect(page).to have_current_path("/applications/#{@app2.id}")
-		expect(page).to have_content("Buddy")
+		expect(page).to have_current_path("/applications/#{@app1.id}")
+		expect(page).to have_content("Rex")
+	end
+		
+	# As a visitor
+# When I visit an application's show page
+# And I have added one or more pets to the application
+# Then I see a section to submit my application
+# And in that section I see an input to enter why I would make a good owner for these pet(s)
+# When I fill in that input
+# And I click a button to submit this application
+# Then I am taken back to the application's show page
+# And I see an indicator that the application is "Pending"
+# And I see all the pets that I want to adopt
+# And I do not see a section to add more pets to this application
 
+	it 'lets you submit the application' do
+		visit "/applications/#{@app1.id}"
+
+		expect(page).to have_button("Submit Application")
+		expect(page).to have_content("Why I would make a good owner for these pet(s)")
+		# note that good owner and good home are two separate fields
+		fill_in :why_good_owner, with: "I had a dog growing up"
+		click_on("Submit Application")
+		expect(page).to have_current_path "/applications/#{@app1.id}"
+		
+		expect(page).to have_content("Pending")
+		expect(page).to have_content("Mittens")
+		expect(page).to have_content("Buddy")
+		expect(page).to_not have_content("Adopt this Pet")
+		# save_and_open_page
 	end
 end
