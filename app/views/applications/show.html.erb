@@ -11,3 +11,9 @@
     <% end%>
 </ul>
 <p>Application status: <%= @application.status %></p>
+
+<%= form_tag '/applications/:id', :method => "get" do %>
+    <%= label_tag(:search, "Add a Pet to this Application") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Submit", :name => nil)%>
+<% end %>
