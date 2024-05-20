@@ -257,4 +257,20 @@ RSpec.describe Application do
 		expect(page).to_not have_content("Adopt this Pet")
 		# save_and_open_page
 	end
+
+	it "Lets you find pets with only partial names" do
+		visit "/applications/#{@app1.id}"
+
+		fill_in :search, with: "Re"
+		click_on("Submit")
+		expect(page).to have_content("Rex")
+	end
+
+	it "Lets you find pets with names regardless of case sensitivity" do
+		visit "/applications/#{@app1.id}"
+
+		fill_in :search, with: "simb"
+		click_on("Submit")
+		expect(page).to have_content("Simba")
+	end
 end
