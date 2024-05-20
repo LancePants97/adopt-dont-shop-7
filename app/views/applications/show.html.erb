@@ -38,7 +38,7 @@
   </ul>
 <% end %>
 
-<% if @application.status == 'In Progress' %>
+<% if @application.status == 'In Progress' && @application.pets.count >= 1  %>
   <%= form_with url: "/applications/#{@application.id}", method: :post, local:true do |form| %>
   <h2>Submit Application</h2>
   <p>Why I would make a good owner for these pet(s): <%= form.text_area :why_good_owner %></p>
@@ -46,3 +46,4 @@
   <% end %>
 <% end %>
 
+<%#  %>
