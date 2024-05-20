@@ -105,4 +105,17 @@ RSpec.describe "the shelters index" do
     expect(page).to have_content(@shelter_2.name)
     expect(page).to_not have_content(@shelter_1.name)
   end
+
+#   US 10
+
+#   As a visitor
+# When I visit the admin shelter index ('/admin/shelters')
+# Then I see all Shelters in the system listed in reverse alphabetical order by name
+
+  it "shows the list of shelters in reverse alphabetical order by name" do
+    visit "/admin/shelters"
+
+    expect(page.body.index(@shelter_2.name)).to be < page.body.index(@shelter_3.name)
+    expect(page.body.index(@shelter_3.name)).to be < page.body.index(@shelter_1.name)
+  end
 end
