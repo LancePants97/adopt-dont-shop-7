@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'admin shelter index page', tyep: :feature do
+RSpec.describe 'admin shelter index page', type: :feature do
     before(:each) do
         @shelter_1 = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
         @shelter_2 = Shelter.create(name: "RGV animal shelter", city: "Harlingen, TX", foster_program: false, rank: 5)
@@ -10,6 +10,11 @@ RSpec.describe 'admin shelter index page', tyep: :feature do
         @shelter_3.pets.create(name: "Lucille Bald", breed: "sphynx", age: 8, adoptable: true)
     end
 
+    #   US 10
+
+#   As a visitor
+# When I visit the admin shelter index ('/admin/shelters')
+# Then I see all Shelters in the system listed in reverse alphabetical order by name
     it "shows the list of shelters in reverse alphabetical order by name" do
         visit "/admin/shelters"
     
