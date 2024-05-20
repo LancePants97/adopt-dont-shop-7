@@ -4,7 +4,7 @@ class Application < ApplicationRecord
     validates :applicant_name, :street_address, :city, :state, :zip_code, :description, presence: true
 
     def approve
-        update(status: 'approved')
+        update(status: 'Approved')
     end
 
 end
