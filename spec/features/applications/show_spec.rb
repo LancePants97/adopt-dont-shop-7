@@ -156,6 +156,9 @@ RSpec.describe Application do
 
 	# Application number 2
 		@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
+	
+		# Application number 2
+		@app3 = Application.create!(applicant_name: 'Harry Potter', street_address: '789 Hogwarts Ave', city: 'Portland', state: 'OR', zip_code: '45301', description: "I can do magic", status: "In Progress")
 
 	# Associate pets with applications
 		ApplicationPet.create!(application: @app1, pet: @pet1)
@@ -255,6 +258,11 @@ RSpec.describe Application do
 		expect(page).to have_content("Mittens")
 		expect(page).to have_content("Buddy")
 		expect(page).to_not have_content("Adopt this Pet")
-		# save_and_open_page
+	end
+
+	it "won't save if no pets are on an Applications page" do
+		visit "/applications/#{@app3.id}"
+
+		expect(page).to_not have_button("Submit Application")
 	end
 end
