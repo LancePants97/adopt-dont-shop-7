@@ -186,7 +186,8 @@ RSpec.describe 'admin shelter index page', type: :feature do
         click_button("Reject")
         expect(page).to have_current_path("/admin/applications/#{@app2.id}")
         expect(page).to_not have_button("Reject")
-        expect(page).to have_content("Rejectd")
+        expect(page).to have_content("Rejected")
+        save_and_open_page
     end
 
 end
