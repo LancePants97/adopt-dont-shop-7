@@ -190,4 +190,22 @@ RSpec.describe 'admin shelter index page', type: :feature do
         save_and_open_page
     end
 
+        # As a visitor
+    # When there are two applications in the system for the same pet
+    # When I visit the admin application show page for one of the applications
+    # And I approve or reject the pet for that application
+    # When I visit the other application's admin show page
+    # Then I do not see that the pet has been accepted or rejected for that application
+    # And instead I see buttons to approve or reject the pet for this specific application
+    it "only changes the status of one application if I approve or reject it" do
+        visit "/admin/applications/#{@app3.id}"
+
+        save_and_open_page
+        click_button("Approve")
+        visit "/admin/applications/#{@app4.id}" 
+        save_and_open_page
+        expect(page).to have_button("Approve")
+        expect(page).to have_button("Reject")
+    end 
+
 end
