@@ -154,14 +154,21 @@ RSpec.describe 'admin shelter index page', type: :feature do
 
 	# Application number 1
 	@app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
-
 	# Application number 2
 	@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
-
+	# Application number 3
+    @app3 = Application.create!(applicant_name: 'Luka Doncic', street_address: '45632 Overwatch st', city: 'Dallas', state: 'TX', zip_code: '93615', description: "I am tall", status: "Pending")
+	# Application number 4
+    @app4 = Application.create!(applicant_name: 'Kyrie Irving', street_address: '4679 Yaeger ave', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I am quick", status: "Pending")
+    
 	# Associate pets with applications
 	ApplicationPet.create!(application: @app1, pet: @pet1)
 	ApplicationPet.create!(application: @app1, pet: @pet2)
 	ApplicationPet.create!(application: @app2, pet: @pet2)
+	ApplicationPet.create!(application: @app3, pet: @pet6)
+	ApplicationPet.create!(application: @app4, pet: @pet6)
+
+
 	end
 
     # As a visitor
@@ -173,8 +180,11 @@ RSpec.describe 'admin shelter index page', type: :feature do
     # And instead I see an indicator next to the pet that they have been approved
     it "allows me to approve the application for a specific pet" do
         visit "/admin/applications/#{@app2.id}"
+        
         expect(page).to have_button("Approve")
+        
         click_button("Approve")
+
         expect(page).to have_current_path("/admin/applications/#{@app2.id}")
         expect(page).to_not have_button("Approve")
         expect(page).to have_content("Approved")
@@ -182,12 +192,15 @@ RSpec.describe 'admin shelter index page', type: :feature do
 
     it "allows me to reject the application for a specific pet" do
         visit "/admin/applications/#{@app2.id}"
+        
         expect(page).to have_button("Reject")
+        
         click_button("Reject")
+
         expect(page).to have_current_path("/admin/applications/#{@app2.id}")
         expect(page).to_not have_button("Reject")
         expect(page).to have_content("Rejected")
-        save_and_open_page
+
     end
 
         # As a visitor
@@ -203,7 +216,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
         save_and_open_page
         click_button("Approve")
         visit "/admin/applications/#{@app4.id}" 
-        save_and_open_page
+
         expect(page).to have_button("Approve")
         expect(page).to have_button("Reject")
     end 
