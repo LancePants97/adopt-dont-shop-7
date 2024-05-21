@@ -35,6 +35,8 @@ class ApplicationsController < ApplicationController
     @application.pets << pet
     redirect_to "/applications/#{@application.id}"
   end
+
+
   
   def application_params
     params.permit(:applicant_name, 
