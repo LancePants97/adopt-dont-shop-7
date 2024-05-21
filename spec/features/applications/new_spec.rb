@@ -163,12 +163,11 @@ RSpec.describe "the pets index" do
 	ApplicationPet.create!(application: @app1, pet: @pet2)
 	ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
-    it "keeps me on the same page and gives me an error message if I try to submit without filling out the form" do
-        
+    it "keeps me on the same page and gives me an error message if I try to submit without filling out the form" do        
         visit "/applications/new"
 
-        # save_and_open_page
         click_button ("Submit")
+		
         expect(page).to have_current_path("/applications/new")
         expect(page).to have_content("All fields must be filled in.")
         

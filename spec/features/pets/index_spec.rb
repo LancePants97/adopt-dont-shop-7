@@ -162,56 +162,55 @@ RSpec.describe "the pets index" do
 	ApplicationPet.create!(application: @app1, pet: @pet2)
 	ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
-  it "has a link to start an application when I click this link then I am taken to the new application where I see a form. Once I submit it I am taken to a completed page" do
 
-    visit "/pets"
+	it "has a link to start an application when I click this link then I am taken to the new application where I see a form. Once I submit it I am taken to a completed page" do
 
-    expect(page).to have_link("Start an Application")
-    click_link("Start an Application")
+		visit "/pets"
 
-    expect(page).to have_current_path("/applications/new")
-    # save_and_open_page
-    fill_in 'applicant_name', with: 'John Doe'
-    fill_in 'street_address', with: '123 Main St'
-    fill_in 'city', with: 'Denver'
-    fill_in 'state', with: 'CO'
-    fill_in 'zip_code', with: '80202'
-    fill_in 'description', with: 'I would make a great home because I love animals.'
-    
-    click_button("Submit")
+		expect(page).to have_link("Start an Application")
+		click_link("Start an Application")
 
-    # Check that we are on the application's show page
-    application = Application.last
-    expect(page).to have_current_path("/applications/#{application.id}")
+		expect(page).to have_current_path("/applications/new")
 
-    expect(page).to have_content(application.applicant_name)
-    expect(page).to have_content(application.street_address)
-    expect(page).to have_content(application.city)
-    expect(page).to have_content(application.state)
-    expect(page).to have_content(application.zip_code)
-    expect(page).to have_content(application.description)
-    expect(page).to have_content(application.status)
+		fill_in 'applicant_name', with: 'John Doe'
+		fill_in 'street_address', with: '123 Main St'
+		fill_in 'city', with: 'Denver'
+		fill_in 'state', with: 'CO'
+		fill_in 'zip_code', with: '80202'
+		fill_in 'description', with: 'I would make a great home because I love animals.'
+		
+		click_button("Submit")
 
-    expect(page).to have_content("In Progress")
+		application = Application.last
+		expect(page).to have_current_path("/applications/#{application.id}")
 
-  end
+		expect(page).to have_content(application.applicant_name)
+		expect(page).to have_content(application.street_address)
+		expect(page).to have_content(application.city)
+		expect(page).to have_content(application.state)
+		expect(page).to have_content(application.zip_code)
+		expect(page).to have_content(application.description)
+		expect(page).to have_content(application.status)
 
-  it "lists all the pets with their attributes" do
-    shelter = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
-    pet_1 = Pet.create(adoptable: true, age: 1, breed: "sphynx", name: "Lucille Bald", shelter_id: shelter.id)
-    pet_2 = Pet.create(adoptable: true, age: 3, breed: "doberman", name: "Lobster", shelter_id: shelter.id)
+		expect(page).to have_content("In Progress")
+  	end
 
-    visit "/pets"
+  	it "lists all the pets with their attributes" do
+		shelter = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
+		pet_1 = Pet.create(adoptable: true, age: 1, breed: "sphynx", name: "Lucille Bald", shelter_id: shelter.id)
+		pet_2 = Pet.create(adoptable: true, age: 3, breed: "doberman", name: "Lobster", shelter_id: shelter.id)
 
-    expect(page).to have_content(pet_1.name)
-    expect(page).to have_content(pet_1.breed)
-    expect(page).to have_content(pet_1.age)
-    expect(page).to have_content(shelter.name)
+		visit "/pets"
 
-    expect(page).to have_content(pet_2.name)
-    expect(page).to have_content(pet_2.breed)
-    expect(page).to have_content(pet_2.age)
-    expect(page).to have_content(shelter.name)
+		expect(page).to have_content(pet_1.name)
+		expect(page).to have_content(pet_1.breed)
+		expect(page).to have_content(pet_1.age)
+		expect(page).to have_content(shelter.name)
+
+		expect(page).to have_content(pet_2.name)
+		expect(page).to have_content(pet_2.breed)
+		expect(page).to have_content(pet_2.age)
+		expect(page).to have_content(shelter.name)
   end
 
   it "only lists adoptable pets" do
