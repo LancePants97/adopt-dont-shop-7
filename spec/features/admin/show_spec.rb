@@ -180,4 +180,14 @@ RSpec.describe 'admin shelter index page', type: :feature do
         expect(page).to have_content("Approved")
     end
 
+    it "allows me to reject the application for a specific pet" do
+        visit "/admin/applications/#{@app2.id}"
+        expect(page).to have_button("Reject")
+        click_button("Reject")
+        expect(page).to have_current_path("/admin/applications/#{@app2.id}")
+        expect(page).to_not have_button("Reject")
+        expect(page).to have_content("Rejected")
+        save_and_open_page
+    end
+
 end

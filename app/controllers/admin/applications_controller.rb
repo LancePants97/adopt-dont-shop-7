@@ -13,4 +13,10 @@ class Admin::ApplicationsController < ApplicationController
         @application.approve
         redirect_to "/admin/applications/#{@application.id}"
     end
+
+    def reject_app
+        @application = Application.find(params[:id])
+        @application.reject
+        redirect_to "/admin/applications/#{@application.id}"
+    end
 end

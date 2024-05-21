@@ -7,4 +7,8 @@ class Application < ApplicationRecord
         update(status: 'Approved')
     end
 
+    def reject
+        update(status: 'Rejected')
+    end
+
 end
