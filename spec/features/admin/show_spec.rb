@@ -167,17 +167,8 @@ RSpec.describe 'admin shelter index page', type: :feature do
 	ApplicationPet.create!(application: @app2, pet: @pet2)
 	ApplicationPet.create!(application: @app3, pet: @pet6)
 	ApplicationPet.create!(application: @app4, pet: @pet6)
-
-
 	end
 
-    # As a visitor
-    # When I visit an admin application show page ('/admin/applications/:id')
-    # For every pet that the application is for, I see a button to approve the application for that specific pet
-    # When I click that button
-    # Then I'm taken back to the admin application show page
-    # And next to the pet that I approved, I do not see a button to approve this pet
-    # And instead I see an indicator next to the pet that they have been approved
     it "allows me to approve the application for a specific pet" do
         visit "/admin/applications/#{@app2.id}"
         
@@ -200,25 +191,15 @@ RSpec.describe 'admin shelter index page', type: :feature do
         expect(page).to have_current_path("/admin/applications/#{@app2.id}")
         expect(page).to_not have_button("Reject")
         expect(page).to have_content("Rejected")
-
     end
 
-        # As a visitor
-    # When there are two applications in the system for the same pet
-    # When I visit the admin application show page for one of the applications
-    # And I approve or reject the pet for that application
-    # When I visit the other application's admin show page
-    # Then I do not see that the pet has been accepted or rejected for that application
-    # And instead I see buttons to approve or reject the pet for this specific application
     it "only changes the status of one application if I approve or reject it" do
         visit "/admin/applications/#{@app3.id}"
 
-        save_and_open_page
         click_button("Approve")
         visit "/admin/applications/#{@app4.id}" 
 
         expect(page).to have_button("Approve")
         expect(page).to have_button("Reject")
     end 
-
 end
