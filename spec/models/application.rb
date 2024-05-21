@@ -169,4 +169,10 @@ RSpec.describe 'admin shelter index page', type: :feature do
 
         expect(@app2.status).to eq('Approved')
     end
+
+    it "changes the application status to rejected" do
+        @app2.reject
+
+        expect(@app2.status).to eq('Rejected')
+    end
 end
