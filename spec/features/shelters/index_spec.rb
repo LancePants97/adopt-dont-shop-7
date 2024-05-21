@@ -105,13 +105,4 @@ RSpec.describe "the shelters index" do
     expect(page).to have_content(@shelter_2.name)
     expect(page).to_not have_content(@shelter_1.name)
   end
-
-
-
-  # it "shows the list of shelters in reverse alphabetical order by name" do
-  #   visit "/admin/shelters"
-
-  #   expect(page.body.index(@shelter_2.name)).to be < page.body.index(@shelter_3.name)
-  #   expect(page.body.index(@shelter_3.name)).to be < page.body.index(@shelter_1.name)
-  # end
 end
