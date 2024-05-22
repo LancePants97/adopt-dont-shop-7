@@ -9,6 +9,7 @@
 <p>Pets in application:</p>
 <ul>
   <% @application.pets.each do |pet| %>
+    <section id=<%= "pet-#{pet.id}" %>>
     <li><%= pet.name %></li>
   <% end %>
 </ul>

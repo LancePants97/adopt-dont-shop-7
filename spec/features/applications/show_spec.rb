@@ -9,7 +9,7 @@ RSpec.describe Application do
 							city: "Denver",
 							rank: 1
 							)
-
+							
 	# Shelter 2
 		@sfhva = Shelter.create!(
 							foster_program: false,
@@ -79,7 +79,6 @@ RSpec.describe Application do
 						name: "Charlie",
 						shelter_id: @pcs.id
 						)
-
 
 
 	# Veterinary Office 1
@@ -177,8 +176,9 @@ RSpec.describe Application do
 		expect(page).to have_content(@app1.description)
 		expect(page).to have_content(@app1.status)
 
+		within "#pet-#{@pet1.id}" do
 		expect(page).to have_content(@pet1.name)
-		expect(page).to have_content(@pet1.name)
+		end
 	end
 
 	it 'shows an option to search and add a pet to the application' do
