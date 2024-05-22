@@ -35,6 +35,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
     expect(Shelter.pending_apps).to eq([@shelter_1])
     # We know in this case that shelter_1 will be displayed on the page because pet_2 
     # belongs to shelter_1, and app_2 is the only app that is pending. Therefore pet_2 and
-    # app_2 are both connected via pet_app_3
+    # app_2 are both connected via pet_app_3 and shelter_1 will be the only shelter with
+    # a pending application
 	end
 end
