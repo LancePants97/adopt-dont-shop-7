@@ -1,0 +1,10 @@
+<%= form_with url: '/applications', method: :post, local:true do |form| %>
+    <p>Name: <%= form.text_field :applicant_name %></p>
+    <p>Street Address: <%= form.text_field :street_address %></p>
+    <p>City: <%= form.text_field :city %></p>
+    <p>State: <%= form.text_field :state %></p>
+    <p>Zip Code: <%= form.text_field :zip_code %></p>
+    <p>Description of why I would make a good home: <%= form.text_area :description %></p>
+
+    <%= form.submit "Submit" %>
+<% end %>

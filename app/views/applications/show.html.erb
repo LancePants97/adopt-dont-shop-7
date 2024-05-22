@@ -1,5 +1,49 @@
-<h1>Name: <%= @application.applicant_name %></h1>
+<!-- app/views/applications/show.html.erb -->
+<h1>Application for <%= @application.applicant_name %></h1>
 <p>Street: <%= @application.street_address %></p>
 <p>City: <%= @application.city %></p>
 <p>State: <%= @application.state %></p>
 <p>Zip Code: <%= @application.zip_code %></p>
+<p>Why you are a good applicant: <%= @application.description %></p>
+<p>Application status: <%= @application.status %></p>
+<p>Pets in application:</p>
+<ul>
+  <% @application.pets.each do |pet| %>
+    <li><%= pet.name %></li>
+  <% end %>
+</ul>
+
+<% if @application.status == 'In Progress' %>
+  <h2>Add a Pet to this Application</h2>
+  <%= form_with url: "/search_pets", method: :get, local: true do %>
+    <div>
+    <%= label_tag :search, "Search for a pet by name" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= hidden_field_tag :application_id, @application.id %>
+    <%= submit_tag "Submit" %>
+    <% end %>
+<% end %>
+
+</div>
+
+<% if @pets %>
+  <h3>Search Results</h3>
+  <ul>
+    <% @pets.each do |pet| %>
+      <li>
+        <%= pet.name %> - 
+        <%= button_to "Adopt this Pet", "/applications/#{@application.id}/add_pet/#{pet.id}", method: :post %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @application.status == 'In Progress' && @application.pets.count >= 1  %>
+  <%= form_with url: "/applications/#{@application.id}", method: :post, local:true do |form| %>
+  <h2>Submit Application</h2>
+  <p>Why I would make a good owner for these pet(s): <%= form.text_area :why_good_owner %></p>
+  <%= form.submit "Submit Application" %>
+  <% end %>
+<% end %>
+
+<%#  %>
