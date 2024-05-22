@@ -36,4 +36,10 @@ class Shelter < ApplicationRecord
   def self.order_by_name_desc
     order(name: :desc)
   end
+
+  def self.pending_apps
+    joins(:applications)
+      .select("shelters.*, applications.id AS application_id, applications.status")
+      .where("applications.status = ?", "Pending")
+  end
 end
