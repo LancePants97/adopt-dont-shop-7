@@ -5,6 +5,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
     @shelter_1 = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
     @shelter_2 = Shelter.create(name: "RGV animal shelter", city: "Harlingen, TX", foster_program: false, rank: 5)
     @shelter_3 = Shelter.create(name: "Fancy pets of Colorado", city: "Denver, CO", foster_program: true, rank: 10)
+
     @pet_1 = @shelter_1.pets.create(name: "Mr. Pirate", breed: "tuxedo shorthair", age: 5, adoptable: true)
     @pet_2 = @shelter_1.pets.create(name: "Clawdia", breed: "shorthair", age: 3, adoptable: true)
     @pet_3 = @shelter_3.pets.create(name: "Lucille Bald", breed: "sphynx", age: 8, adoptable: true)
@@ -13,10 +14,12 @@ RSpec.describe 'admin shelter index page', type: :feature do
     @pet_app_1 = ApplicationPet.create!(application: @app_1, pet: @pet_1)
     @pet_app_2 = ApplicationPet.create!(application: @app_1, pet: @pet_2)
     @pet_app_3 = ApplicationPet.create!(application: @app_2, pet: @pet_2)    
+
   end
 
   it "shows the list of shelters in reverse alphabetical order by name" do
     visit "/admin/shelters"
+
     
     expect(page.body.index(@shelter_2.name)).to be < page.body.index(@shelter_3.name)
     expect(page.body.index(@shelter_3.name)).to be < page.body.index(@shelter_1.name)
@@ -38,4 +41,5 @@ RSpec.describe 'admin shelter index page', type: :feature do
     # app_2 are both connected via pet_app_3 and shelter_1 will be the only shelter with
     # a pending application
 	end
+
 end

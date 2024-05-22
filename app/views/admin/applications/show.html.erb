@@ -9,6 +9,9 @@
 <p>Pets in application:</p>
 <ul>
     <% @application.pets.each do |pet| %>
+
+    
+        <li id= "pet-<%=pet.id%>">
         <li><%= pet.name %></li>
     <% end %>
 </ul>

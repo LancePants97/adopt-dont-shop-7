@@ -1,8 +1,13 @@
 # Lance & Clyde version
 
-- [DB: Schema](https://dbdiagram.io/d/664677fdf84ecd1d226577ef)
+- [DB: Schema]((https://dbdiagram.io/d/Adopt-dont-shop-6647b7c9f84ecd1d227cdc77))
 - [DTR](https://docs.google.com/document/d/1fGoPUxZDmYf8-JPhiMjLe0isj9V4Er3oMueqqPOi2Ys/edit)
 - [Github Projects](https://github.com/users/LancePants97/projects/2)
+
+DB Schema
+
+<img width="865" alt="Screenshot 2024-05-22 at 10 33 39 AM" src="https://github.com/LancePants97/adopt-dont-shop-7/assets/15273149/18095eba-e2b5-4611-848e-af6343600489">
+
 
 
 
@@ -14,7 +19,7 @@ This is a paired project used in Turing School's Backend Program Module 2.
 
 In this project, students will build upon the code in this repo to create a Pet Adoption Platform. Users will be able to apply to adopt pets, and Admins will be able to approve or reject applications and see statistics for the Shelters, Pets, and Applications in the system.
 
-- Build out CRUD functionality for a many to many relationship
+- Build out CRUD functionality for a many-to-many relationship
 - Use ActiveRecord to write queries that join multiple tables of data together
 - Use MVC to organize code effectively, limiting the amount of logic included in views and controllers
 - Validate models and handle sad paths for invalid data input

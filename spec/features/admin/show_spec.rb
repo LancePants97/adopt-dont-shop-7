@@ -169,37 +169,37 @@ RSpec.describe 'admin shelter index page', type: :feature do
 	ApplicationPet.create!(application: @app4, pet: @pet6)
 	end
 
-    it "allows me to approve the application for a specific pet" do
-        visit "/admin/applications/#{@app2.id}"
-        
-        expect(page).to have_button("Approve")
-        
-        click_button("Approve")
+  it "allows me to approve the application for a specific pet" do
+    visit "/admin/applications/#{@app2.id}"
+    
+    expect(page).to have_button("Approve")
+    
+    click_button("Approve")
 
-        expect(page).to have_current_path("/admin/applications/#{@app2.id}")
-        expect(page).to_not have_button("Approve")
-        expect(page).to have_content("Approved")
-    end
+    expect(page).to have_current_path("/admin/applications/#{@app2.id}")
+    expect(page).to_not have_button("Approve")
+    expect(page).to have_content("Approved")
+  end
 
-    it "allows me to reject the application for a specific pet" do
-        visit "/admin/applications/#{@app2.id}"
-        
-        expect(page).to have_button("Reject")
-        
-        click_button("Reject")
+  it "allows me to reject the application for a specific pet" do
+    visit "/admin/applications/#{@app2.id}"
+    
+    expect(page).to have_button("Reject")
+    
+    click_button("Reject")
 
-        expect(page).to have_current_path("/admin/applications/#{@app2.id}")
-        expect(page).to_not have_button("Reject")
-        expect(page).to have_content("Rejected")
-    end
+    expect(page).to have_current_path("/admin/applications/#{@app2.id}")
+    expect(page).to_not have_button("Reject")
+    expect(page).to have_content("Rejected")
+  end
 
-    it "only changes the status of one application if I approve or reject it" do
-        visit "/admin/applications/#{@app3.id}"
+  it "only changes the status of one application if I approve or reject it" do
+    visit "/admin/applications/#{@app3.id}"
 
-        click_button("Approve")
-        visit "/admin/applications/#{@app4.id}" 
+    click_button("Approve")
+    visit "/admin/applications/#{@app4.id}" 
 
-        expect(page).to have_button("Approve")
-        expect(page).to have_button("Reject")
-    end 
+    expect(page).to have_button("Approve")
+    expect(page).to have_button("Reject")
+  end 
 end

@@ -4,7 +4,7 @@ class Admin::ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
 
     if params[:search].present?
-      @pets = Pet.where('name ILIKE ?', "%#{params[:search]}%")
+      @pets = Pet.search(params[:search])
     end
   end
 

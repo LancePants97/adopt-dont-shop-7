@@ -169,5 +169,6 @@ RSpec.describe "the pets index" do
     expect(page).to have_current_path("/applications/new")
     expect(page).to have_content("All fields must be filled in.")
         
+
   end
 end
