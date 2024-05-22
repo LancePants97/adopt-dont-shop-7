@@ -11,4 +11,8 @@ class Application < ApplicationRecord
         update(status: 'Rejected')
     end
 
+    def self.pending_apps
+        
+    end
+
 end
