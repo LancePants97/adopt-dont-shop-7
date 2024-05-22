@@ -18,4 +18,4 @@
 <% end %>
 
 <h2>Shelters With Pending Applications</h2>
-<%= @shelters.pending_apps.pluck(:name) %>
+<%= @shelters.pending_apps.uniq.pluck(:name) %>
