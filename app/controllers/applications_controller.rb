@@ -12,8 +12,6 @@ class ApplicationsController < ApplicationController
 
   def submit
     @application = Application.find(params[:id])
-    # require 'pry'; binding.pry
-    # @application.status = 'Pending'
     @application.update({"status" => "Pending"})
     redirect_to "/applications/#{@application.id}"
   end
@@ -36,8 +34,6 @@ class ApplicationsController < ApplicationController
     redirect_to "/applications/#{@application.id}"
   end
 
-
-  
   def application_params
     params.permit(:applicant_name, 
                   :street_address, 
