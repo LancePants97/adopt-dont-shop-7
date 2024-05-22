@@ -27,18 +27,7 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-  <div> 
-    <%= "Add a Pet to this Application" %>
-  </div>
 
-  <div>
-  <%= form_with url: "/applications/new", method: :get, local: true do |f| %>
-    <%= f.label "search" %>
-    <%= f.text_field :search %>
-    <%= f.submit "Search" %>
-  <% end %>
-  </div>  
-  
   <div>
     <%= form.submit "Submit" %>
   </div>
