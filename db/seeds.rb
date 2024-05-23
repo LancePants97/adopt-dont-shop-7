@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 Pet.destroy_all
 Shelter.destroy_all
 VeterinaryOffice.destroy_all
@@ -112,7 +104,6 @@ vet_office3 = VeterinaryOffice.create!(
                                         max_patient_capacity: 40,
                                         name: "Hillside Veterinary Services"
                                         )
-# Application number 1                       
 
 # Veterinarian 1
 vet1 = Veterinarian.create!(
@@ -162,6 +153,7 @@ vet6 = Veterinarian.create!(
                             veterinary_office_id: vet_office3.id
                             )
 
+# Application number 1                       
 app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
 
 # Application number 2

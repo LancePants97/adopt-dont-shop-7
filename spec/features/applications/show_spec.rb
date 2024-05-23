@@ -80,7 +80,6 @@ RSpec.describe Application do
 						shelter_id: @pcs.id
 						)
 
-
 	# Veterinary Office 1
 		@vet_office1 = VeterinaryOffice.create!(
 											boarding_services: true,
@@ -100,8 +99,7 @@ RSpec.describe Application do
 											boarding_services: true,
 											max_patient_capacity: 40,
 											name: "Hillside Veterinary Services"
-											)
-	# Application number 1                       
+											)                     
 
 	# Veterinarian 1
 		@vet1 = Veterinarian.create!(
@@ -192,7 +190,6 @@ RSpec.describe Application do
 		click_on("Submit")
 
 		expect(page).to have_current_path("/applications/#{@app1.id}?search=Rex")
-
 		expect(page).to have_content(@pet3.name)
 	end
 
@@ -222,7 +219,6 @@ RSpec.describe Application do
 		click_on("Submit Application")
 		
 		expect(page).to have_current_path "/applications/#{@app1.id}"
-		
 		expect(page).to have_content("Pending")
 		expect(page).to have_content("Mittens")
 		expect(page).to have_content("Buddy")

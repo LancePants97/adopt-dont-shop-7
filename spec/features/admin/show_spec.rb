@@ -80,8 +80,6 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						shelter_id: @pcs.id
 						)
 
-
-
 	# Veterinary Office 1
 	@vet_office1 = VeterinaryOffice.create!(
 											boarding_services: true,
@@ -101,8 +99,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 											boarding_services: true,
 											max_patient_capacity: 40,
 											name: "Hillside Veterinary Services"
-											)
-	# Application number 1                       
+											)                     
 
 	# Veterinarian 1
 	@vet1 = Veterinarian.create!(
@@ -157,9 +154,9 @@ RSpec.describe 'admin shelter index page', type: :feature do
 	# Application number 2
 	@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
 	# Application number 3
-    @app3 = Application.create!(applicant_name: 'Luka Doncic', street_address: '45632 Overwatch st', city: 'Dallas', state: 'TX', zip_code: '93615', description: "I am tall", status: "Pending")
+  @app3 = Application.create!(applicant_name: 'Luka Doncic', street_address: '45632 Overwatch st', city: 'Dallas', state: 'TX', zip_code: '93615', description: "I am tall", status: "Pending")
 	# Application number 4
-    @app4 = Application.create!(applicant_name: 'Kyrie Irving', street_address: '4679 Yaeger ave', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I am quick", status: "Pending")
+  @app4 = Application.create!(applicant_name: 'Kyrie Irving', street_address: '4679 Yaeger ave', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I am quick", status: "Pending")
     
 	# Associate pets with applications
 	ApplicationPet.create!(application: @app1, pet: @pet1)
