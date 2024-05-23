@@ -19,7 +19,6 @@ RSpec.describe 'admin shelter index page', type: :feature do
 
   it "shows the list of shelters in reverse alphabetical order by name" do
     visit "/admin/shelters"
-
     
     expect(page.body.index(@shelter_2.name)).to be < page.body.index(@shelter_3.name)
     expect(page.body.index(@shelter_3.name)).to be < page.body.index(@shelter_1.name)
@@ -30,7 +29,6 @@ RSpec.describe 'admin shelter index page', type: :feature do
 # When I visit the admin shelter index ('/admin/shelters')
 # Then I see a section for "Shelters with Pending Applications"
 # And in this section I see the name of every shelter that has a pending application
-    
   it 'has a list of shelters with pending applications' do
 		visit "/admin/shelters"
 

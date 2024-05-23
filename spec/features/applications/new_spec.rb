@@ -99,8 +99,7 @@ RSpec.describe "the pets index" do
 											boarding_services: true,
 											max_patient_capacity: 40,
 											name: "Hillside Veterinary Services"
-											)
-	# Application number 1                       
+											)                      
 
 	# Veterinarian 1
 		@vet1 = Veterinarian.create!(
@@ -168,7 +167,5 @@ RSpec.describe "the pets index" do
 	
     expect(page).to have_current_path("/applications/new")
     expect(page).to have_content("All fields must be filled in.")
-        
-
   end
 end

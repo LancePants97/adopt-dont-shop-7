@@ -43,6 +43,5 @@ class ApplicationsController < ApplicationController
                   :description, 
                   :status)
   end
-  
 end
 
