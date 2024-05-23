@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'admin shelter index page', type: :feature do
 	before(:each) do
     # Shelter 1
-	@hts = Shelter.create!(
+	  @hts = Shelter.create!(
 							foster_program: true,
 							name: "Happy Tails Shelter",
 							city: "Denver",
@@ -11,7 +11,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 							)
 
 	# Shelter 2
-	@sfhva = Shelter.create!(
+	  @sfhva = Shelter.create!(
 							foster_program: false,
 							name: "Safe Haven Animal Rescue",
 							city: "Austin",
@@ -19,7 +19,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 							)
 
 	# Shelter 3
-	@pcs = Shelter.create!(
+	  @pcs = Shelter.create!(
 							foster_program: true,
 							name: "Paws and Claws Sanctuary",
 							city: "Seattle",
@@ -27,7 +27,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 							)
 
 	# Pet 1
-	@pet1 = Pet.create!(
+	  @pet1 = Pet.create!(
 						adoptable: true,
 						age: 3,
 						breed: "Labrador",
@@ -36,7 +36,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						)
 
 	# Pet 2
-	@pet2 = Pet.create!(
+	  @pet2 = Pet.create!(
 						adoptable: false,
 						age: 7,
 						breed: "Siamese",
@@ -45,7 +45,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						)
 
 	# Pet 3
-	@pet3 = Pet.create!(
+	  @pet3 = Pet.create!(
 						adoptable: true,
 						age: 2,
 						breed: "Bulldog",
@@ -54,7 +54,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						)
 
 	# Pet 4
-	@pet4 = Pet.create!(
+	  @pet4 = Pet.create!(
 						adoptable: false,
 						age: 5,
 						breed: "Beagle",
@@ -63,7 +63,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						)
 
 	# Pet 5
-	@pet5 = Pet.create!(
+	  @pet5 = Pet.create!(
 						adoptable: true,
 						age: 4,
 						breed: "Persian",
@@ -72,7 +72,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						)
 
 	# Pet 6
-	@pet6 = Pet.create!(
+	  @pet6 = Pet.create!(
 						adoptable: true,
 						age: 6,
 						breed: "Poodle",
@@ -80,32 +80,29 @@ RSpec.describe 'admin shelter index page', type: :feature do
 						shelter_id: @pcs.id
 						)
 
-
-
 	# Veterinary Office 1
-	@vet_office1 = VeterinaryOffice.create!(
+	  @vet_office1 = VeterinaryOffice.create!(
 											boarding_services: true,
 											max_patient_capacity: 50,
 											name: "Green Valley Vet Clinic"
 											)
 
 	# Veterinary Office 2
-	@vet_office2 = VeterinaryOffice.create!(
+	  @vet_office2 = VeterinaryOffice.create!(
 											boarding_services: false,
 											max_patient_capacity: 30,
 											name: "Downtown Animal Hospital"
 											)
 
 	# Veterinary Office 3
-	@vet_office3 = VeterinaryOffice.create!(
+	  @vet_office3 = VeterinaryOffice.create!(
 											boarding_services: true,
 											max_patient_capacity: 40,
 											name: "Hillside Veterinary Services"
-											)
-	# Application number 1                       
+											)                    
 
 	# Veterinarian 1
-	@vet1 = Veterinarian.create!(
+	  @vet1 = Veterinarian.create!(
 								on_call: true,
 								review_rating: 5,
 								name: "Dr. Sarah Brown",
@@ -113,7 +110,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 								)
 
 	# Veterinarian 2
-	@vet2 = Veterinarian.create!(
+	  @vet2 = Veterinarian.create!(
 								on_call: false,
 								review_rating: 4,
 								name: "Dr. Michael Smith",
@@ -121,7 +118,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 								)
 
 	# Veterinarian 3
-	@vet3 = Veterinarian.create!(
+	  @vet3 = Veterinarian.create!(
 								on_call: true,
 								review_rating: 5,
 								name: "Dr. Emily Johnson",
@@ -129,7 +126,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 								)
 
 	# Veterinarian 4
-	@vet4 = Veterinarian.create!(
+	  @vet4 = Veterinarian.create!(
 								on_call: false,
 								review_rating: 3,
 								name: "Dr. David Lee",
@@ -137,7 +134,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 								)
 
 	# Veterinarian 5
-	@vet5 = Veterinarian.create!(
+	  @vet5 = Veterinarian.create!(
 								on_call: true,
 								review_rating: 4,
 								name: "Dr. Jennifer Wilson",
@@ -145,7 +142,7 @@ RSpec.describe 'admin shelter index page', type: :feature do
 								)
 
 	# Veterinarian 6
-	@vet6 = Veterinarian.create!(
+	  @vet6 = Veterinarian.create!(
 								on_call: false,
 								review_rating: 5,
 								name: "Dr. James Martinez",
@@ -153,26 +150,26 @@ RSpec.describe 'admin shelter index page', type: :feature do
 								)
 
 	# Application number 1
-	@app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
+	  @app1 = Application.create!(applicant_name: 'John Doe', street_address: '123 Main St', city: 'Denver', state: 'CO', zip_code: '80202', description: "I have a big yard", status: "In Progress")
 
 	# Application number 2
-	@app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
+	  @app2 = Application.create!(applicant_name: 'Jane Smith', street_address: '456 Elm St', city: 'Boulder', state: 'CO', zip_code: '80301', description: "I love animals", status: "Pending")
 
 	# Associate pets with applications
-	ApplicationPet.create!(application: @app1, pet: @pet1)
-	ApplicationPet.create!(application: @app1, pet: @pet2)
-	ApplicationPet.create!(application: @app2, pet: @pet2)
+	  ApplicationPet.create!(application: @app1, pet: @pet1)
+	  ApplicationPet.create!(application: @app1, pet: @pet2)
+	  ApplicationPet.create!(application: @app2, pet: @pet2)
 	end
 
-    it "changes the application status to approved" do
-        @app2.approve
+  it "changes the application status to approved" do
+    @app2.approve
 
-        expect(@app2.status).to eq('Approved')
-    end
+    expect(@app2.status).to eq('Approved')
+  end
 
-    it "changes the application status to rejected" do
-        @app2.reject
+  it "changes the application status to rejected" do
+    @app2.reject
 
-        expect(@app2.status).to eq('Rejected')
-    end
+    expect(@app2.status).to eq('Rejected')
+  end
 end
